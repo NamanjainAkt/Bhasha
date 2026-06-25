@@ -1,5 +1,6 @@
 import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
+import { useRouter } from 'expo-router';
+import { Platform, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedIcon } from '@/components/animated-icon';
@@ -29,6 +30,7 @@ function getDevMenuHint() {
 }
 
 export default function HomeScreen() {
+  const router = useRouter();
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
@@ -54,6 +56,15 @@ export default function HomeScreen() {
             hint={<ThemedText type="code">npm run reset-project</ThemedText>}
           />
         </ThemedView>
+
+        <TouchableOpacity
+          style={styles.onboardingLink}
+          onPress={() => router.push('/onboarding' as any)}
+        >
+          <ThemedText type="link" style={styles.onboardingText}>
+            View Onboarding
+          </ThemedText>
+        </TouchableOpacity>
 
         {Platform.OS === 'web' && <WebBadge />}
       </SafeAreaView>
@@ -94,5 +105,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.three,
     paddingVertical: Spacing.four,
     borderRadius: Spacing.four,
+  },
+  onboardingLink: {
+    marginTop: Spacing.three,
+  },
+  onboardingText: {
+    textAlign: 'center',
   },
 });

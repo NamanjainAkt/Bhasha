@@ -1,19 +1,21 @@
-/**
- * Centralized image imports for the Lingua app
- * Import all image assets here and export through the `images` object
- */
+import mascotAuth from "@/assets/images/mascot-auth.png";
+import mascotWelcome from "@/assets/images/mascot-welcome.png";
+import mascotLogo from "@/assets/images/moscot-logo.png";
+import earth from "@/assets/images/earth.png";
+import palace from "@/assets/images/palace.png";
+import streakFire from "@/assets/images/streak-fire.png";
+import treasure from "@/assets/images/treasure.png";
+import logoGlow from "@/assets/images/logo-glow.png";
 
-// Import mascot and brand assets
-// (Add mascot and brand images as they are created)
-
-// Export images object for use throughout the app
 export const images = {
-  // Mascot
-  // mascot: require('@/assets/images/mascot.png'),
-  // mascotHappy: require('@/assets/images/mascot-happy.png'),
-  // mascotSad: require('@/assets/images/mascot-sad.png'),
-  // Icons
-  // (Icon imports will be added as needed)
+  mascotAuth,
+  mascotWelcome,
+  mascotLogo,
+  earth,
+  palace,
+  streakFire,
+  treasure,
+  logoGlow,
 } as const;
 
 export type ImageKey = keyof typeof images;

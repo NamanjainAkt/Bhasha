@@ -94,7 +94,7 @@ export default function TabTwoScreen() {
               screen densities.
             </ThemedText>
             <Image source={require('@/assets/images/react-logo.png')} style={styles.imageReact} />
-            <ExternalLink href="https://reactnative.dev/docs/images">
+            <ExternalLink href="https://docs.expo.dev/images">
               <ThemedText type="linkPrimary">Learn more</ThemedText>
             </ExternalLink>
           </Collapsible>
