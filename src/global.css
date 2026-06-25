@@ -1,9 +1,378 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * ========================================================================
+ * FONT CONFIGURATION
+ * ========================================================================
+ * CSS variables for font families and custom font setup for Poppins
+ */
 :root {
+  /* Primary font family */
+  --font-poppins: "Poppins", sans-serif;
+
+  /* Legacy font variables */
   --font-display:
-    Spline Sans, Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji,
-    Segoe UI Symbol, Noto Color Emoji;
+    Poppins, Spline Sans, Inter, ui-sans-serif, system-ui, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-  --font-rounded: 'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif;
-  --font-serif: Georgia, 'Times New Roman', serif;
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
+    Courier New, monospace;
+  --font-rounded:
+    "SF Pro Rounded", "Hiragino Maru Gothic ProN", Meiryo, "MS PGothic",
+    sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+
+  /* Design system colors */
+  --color-brand-purple: #6c4ef5;
+  --color-brand-deep-purple: #583bf6;
+  --color-brand-blue: #4d88ff;
+  --color-brand-green: #21c16b;
+
+  --color-success: #21c16b;
+  --color-warning: #ffc800;
+  --color-streak: #ff8400;
+  --color-error: #ff4d4f;
+  --color-info: #4d88ff;
+
+  --color-text-primary: #0d1328;
+  --color-text-secondary: #687280;
+  --color-border: #e5e7eb;
+  --color-surface: #f6f7fb;
+  --color-bg-white: #ffffff;
+}
+
+/**
+ * ========================================================================
+ * BASE STYLES - Global defaults
+ * ========================================================================
+ */
+@layer base {
+  /* Ensure all text uses Poppins by default */
+  body,
+  * {
+    font-family: var(--font-poppins);
+  }
+
+  /* Default text color */
+  * {
+    @apply text-text-primary;
+  }
+}
+
+/**
+ * ========================================================================
+ * TYPOGRAPHY UTILITIES - BEM-based utility classes
+ * ========================================================================
+ */
+@layer components {
+  /* Heading 1 - Page/Screen Title (32px Bold) */
+  .typo__h1 {
+    @apply text-h1 font-bold leading-tight;
+    font-family: var(--font-poppins);
+  }
+
+  /* Heading 2 - Section Title (24px SemiBold) */
+  .typo__h2 {
+    @apply text-h2 font-semibold leading-snug;
+    font-family: var(--font-poppins);
+  }
+
+  /* Heading 3 - Card/Module Title (20px SemiBold) */
+  .typo__h3 {
+    @apply text-h3 font-semibold leading-snug;
+    font-family: var(--font-poppins);
+  }
+
+  /* Heading 4 - Subheading (16px Medium) */
+  .typo__h4 {
+    @apply text-h4 font-medium leading-normal;
+    font-family: var(--font-poppins);
+  }
+
+  /* Body Large - Important content (16px Regular) */
+  .typo__body-lg {
+    @apply text-body-lg font-regular leading-relaxed;
+    font-family: var(--font-poppins);
+  }
+
+  /* Body Medium - Body text (14px Regular) */
+  .typo__body-md {
+    @apply text-body-md font-regular leading-relaxed;
+    font-family: var(--font-poppins);
+  }
+
+  /* Body Small - Supporting text (13px Regular) */
+  .typo__body-sm {
+    @apply text-body-sm font-regular leading-relaxed;
+    font-family: var(--font-poppins);
+  }
+
+  /* Caption - Labels, meta text (11px Regular) */
+  .typo__caption {
+    @apply text-caption font-regular leading-normal;
+    font-family: var(--font-poppins);
+  }
+}
+
+/**
+ * ========================================================================
+ * COMPONENT UTILITIES - Reusable component classes (BEM methodology)
+ * ========================================================================
+ */
+@layer components {
+  /**
+   * BUTTONS - Primary, Secondary, Tertiary
+   */
+
+  /* Button Base */
+  .btn {
+    @apply flex items-center justify-center rounded-lg font-medium transition-all duration-200;
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+
+  /* Primary Button - Brand purple, white text */
+  .btn--primary {
+    @apply btn bg-brand-purple text-white;
+  }
+
+  .btn--primary:active {
+    @apply bg-brand-deep-purple;
+  }
+
+  /* Secondary Button - Purple outline */
+  .btn--secondary {
+    @apply btn border-2 border-brand-purple text-brand-purple;
+  }
+
+  .btn--secondary:active {
+    @apply bg-brand-purple/10;
+  }
+
+  /* Tertiary Button - Text only */
+  .btn--tertiary {
+    @apply btn text-brand-purple;
+  }
+
+  .btn--tertiary:active {
+    @apply bg-brand-purple/5;
+  }
+
+  /* Success Button */
+  .btn--success {
+    @apply btn bg-success text-white;
+  }
+
+  /* Warning Button */
+  .btn--warning {
+    @apply btn bg-warning text-text-primary;
+  }
+
+  /* Error Button */
+  .btn--error {
+    @apply btn bg-error text-white;
+  }
+
+  /* Button Sizes */
+  .btn--sm {
+    min-height: 40px;
+    padding: 8px 12px;
+  }
+
+  .btn--lg {
+    min-height: 56px;
+    padding: 16px 20px;
+  }
+
+  .btn--full {
+    @apply w-full;
+  }
+
+  /**
+   * CARDS - Playful card styling
+   */
+
+  /* Card Base */
+  .card {
+    @apply bg-white rounded-lg p-4 shadow-card transition-shadow duration-200;
+  }
+
+  .card:active {
+    @apply shadow-card-hover;
+  }
+
+  /* Card Sizes */
+  .card--sm {
+    @apply p-3;
+  }
+
+  .card--lg {
+    @apply p-6;
+  }
+
+  /**
+   * BADGES - Status indicators
+   */
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-caption font-medium;
+  }
+
+  .badge--success {
+    @apply bg-success/10 text-success;
+  }
+
+  .badge--warning {
+    @apply bg-warning/10 text-text-primary;
+  }
+
+  .badge--error {
+    @apply bg-error/10 text-error;
+  }
+
+  .badge--info {
+    @apply bg-info/10 text-info;
+  }
+
+  /**
+   * INPUT FIELDS - Form inputs
+   */
+
+  .input {
+    @apply w-full rounded-lg border-2 border-border-light px-4 py-2 text-body-md transition-colors duration-200;
+    @apply placeholder-text-secondary;
+  }
+
+  .input:focus {
+    @apply border-brand-purple outline-none;
+  }
+
+  .input--error {
+    @apply border-error;
+  }
+
+  /**
+   * SURFACES - Background containers
+   */
+
+  .surface {
+    @apply bg-surface rounded-lg p-4;
+  }
+
+  .surface--elevated {
+    @apply bg-white shadow-md rounded-lg p-4;
+  }
+
+  /**
+   * DIVIDERS - Visual separators
+   */
+
+  .divider {
+    @apply h-px w-full bg-border-light;
+  }
+
+  .divider--vertical {
+    @apply w-px h-full bg-border-light;
+  }
+
+  /**
+   * PROGRESS BAR - XP and lesson progress
+   */
+
+  .progress {
+    @apply w-full h-2 bg-border-light rounded-full overflow-hidden;
+  }
+
+  .progress__bar {
+    @apply h-full bg-brand-purple rounded-full transition-all duration-300;
+  }
+
+  .progress__bar--success {
+    @apply bg-success;
+  }
+
+  .progress__bar--warning {
+    @apply bg-warning;
+  }
+}
+
+/**
+ * ========================================================================
+ * RESPONSIVE UTILITIES - Mobile-first design
+ * ========================================================================
+ */
+@layer components {
+  /* Container - Max width wrapper */
+  .container {
+    @apply w-full mx-auto px-4;
+    max-width: 800px;
+  }
+
+  /* Safe area padding for notches */
+  .safe-area {
+    @apply pt-4 pb-4;
+  }
+
+  /* Flex helpers */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+}
+
+/**
+ * ========================================================================
+ * ANIMATION & TRANSITION UTILITIES
+ * ========================================================================
+ */
+@layer components {
+  /* Smooth fade in */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 300ms ease-in-out;
+  }
+
+  /* Smooth slide up */
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 300ms ease-out;
+  }
+
+  /* Pulse animation for active states */
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
 }

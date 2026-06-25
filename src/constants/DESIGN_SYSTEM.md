@@ -1,0 +1,460 @@
+/\*\*
+
+- Lingua Design System Documentation
+- ===================================
+-
+- This file documents all design tokens, utilities, and patterns for the Lingua app.
+- The design system is built on NativeWind (Tailwind CSS for React Native) with
+- custom typography utilities and component classes.
+-
+- For more details, see:
+- - src/constants/theme.ts - All design tokens
+- - src/global.css - Utility classes and components
+- - tailwind.config.js - Tailwind configuration
+    \*/
+
+/\*\*
+
+- ========================================================================
+- 1.  COLORS
+- ========================================================================
+-
+- The Lingua color system consists of three categories:
+- - Brand colors (purple, blue, green)
+- - Semantic colors (success, warning, error, info)
+- - Neutral colors (text, borders, surfaces)
+-
+- Usage in Tailwind classes:
+- - text-brand-purple, bg-brand-purple, border-brand-purple
+- - text-success, bg-success, border-success
+- - text-text-primary, bg-surface, text-text-secondary
+-
+- Example:
+- <View className="bg-brand-purple p-4 rounded-lg">
+- <Text className="text-white text-h2">Hello</Text>
+- </View>
+-
+- Color Palette:
+- ┌─────────────────┬──────────────────────────────────────┐
+- │ Brand Colors │ HEX Code │
+- ├─────────────────┼──────────────────────────────────────┤
+- │ Purple │ #6C4EF5 (Primary brand color) │
+- │ Deep Purple │ #583BF6 (Pressed/hover state) │
+- │ Blue │ #4D88FF (Secondary brand color) │
+- │ Green │ #21C16B (Success state) │
+- ├─────────────────┼──────────────────────────────────────┤
+- │ Semantic Colors │ │
+- ├─────────────────┼──────────────────────────────────────┤
+- │ Success │ #21C16B (Green) │
+- │ Warning │ #FFC800 (Yellow/Orange) │
+- │ Streak │ #FF8400 (Orange) │
+- │ Error │ #FF4D4F (Red) │
+- │ Info │ #4D88FF (Blue) │
+- ├─────────────────┼──────────────────────────────────────┤
+- │ Neutral Colors │ │
+- ├─────────────────┼──────────────────────────────────────┤
+- │ Text Primary │ #0D1328 (Dark navy, default text) │
+- │ Text Secondary │ #687280 (Gray, supporting text) │
+- │ Border │ #E5E7EB (Light gray for dividers) │
+- │ Surface │ #F6F7FB (Light bg for cards) │
+- │ Background │ #FFFFFF (White, main background) │
+- └─────────────────┴──────────────────────────────────────┘
+  \*/
+
+/\*\*
+
+- ========================================================================
+- 2.  TYPOGRAPHY
+- ========================================================================
+-
+- Font Family: Poppins (loaded via expo-font in src/app/\_layout.tsx)
+-
+- The typography system includes 8 preset styles:
+- - 2 heading styles (H1, H2)
+- - 2 section title styles (H3, H4)
+- - 3 body text styles (Body Large, Body Medium, Body Small)
+- - 1 caption style for labels and meta text
+-
+- TYPOGRAPHY TABLE:
+- ┌──────────────┬──────────┬────────┬──────────┬────────────────┐
+- │ Style Name │ Size │ Weight │ Line Ht │ Tailwind Class │
+- ├──────────────┼──────────┼────────┼──────────┼────────────────┤
+- │ H1 │ 32px │ Bold │ 1.2 │ text-h1 │
+- │ H2 │ 24px │ SB\* │ 1.3 │ text-h2 │
+- │ H3 │ 20px │ SB\* │ 1.3 │ text-h3 │
+- │ H4 │ 16px │ Medium │ 1.4 │ text-h4 │
+- │ Body Large │ 16px │ Regular│ 1.6 │ text-body-lg │
+- │ Body Medium │ 14px │ Regular│ 1.6 │ text-body-md │
+- │ Body Small │ 13px │ Regular│ 1.6 │ text-body-sm │
+- │ Caption │ 11px │ Regular│ 1.4 │ text-caption │
+- └──────────────┴──────────┴────────┴──────────┴────────────────┘
+- \*SB = SemiBold (600)
+-
+- USAGE - Typography Utility Classes:
+-
+- H1 - Page/Screen Titles:
+- <Text className="typo__h1">Welcome to Lingua</Text>
+-
+- H2 - Section Titles:
+- <Text className="typo__h2">Lesson 5: Colors</Text>
+-
+- H3 - Card/Module Titles:
+- <Text className="typo__h3">Vocabulary</Text>
+-
+- H4 - Subheadings:
+- <Text className="typo__h4">Learning Objective</Text>
+-
+- Body Large - Important content:
+- <Text className="typo__body-lg">Instructions for the lesson</Text>
+-
+- Body Medium - Standard body text:
+- <Text className="typo__body-md">Complete the exercise below</Text>
+-
+- Body Small - Supporting text:
+- <Text className="typo__body-sm">You have 3 days left in your streak</Text>
+-
+- Caption - Labels and meta:
+- <Text className="typo__caption">Lesson 1 • 5 min • 10 XP</Text>
+-
+- Font Weight Classes:
+- - font-regular (400)
+- - font-medium (500)
+- - font-semibold (600)
+- - font-bold (700)
+-
+- Line Height Classes:
+- - leading-tight (1.2)
+- - leading-snug (1.3)
+- - leading-normal (1.4)
+- - leading-relaxed (1.6)
+    \*/
+
+/\*\*
+
+- ========================================================================
+- 3.  SPACING
+- ========================================================================
+-
+- The spacing scale is used for padding, margin, and gap.
+- All values are in pixels.
+-
+- ┌────────┬──────────┐
+- │ Value │ Pixels │
+- ├────────┼──────────┤
+- │ 0.5 │ 2px │
+- │ 1 │ 4px │
+- │ 2 │ 8px │
+- │ 3 │ 12px │
+- │ 4 │ 16px │
+- │ 5 │ 20px │
+- │ 6 │ 24px │
+- │ 8 │ 32px │
+- │ 10 │ 40px │
+- │ 12 │ 48px │
+- │ 16 │ 64px │
+- └────────┴──────────┘
+-
+- Usage:
+- <View className="p-4"> {/_ padding: 16px _/}
+- <View className="m-6"> {/_ margin: 24px _/}
+- <View className="gap-4"> {/_ gap: 16px _/}
+- <View className="px-4 py-6"> {/_ horizontal 16px, vertical 24px _/}
+  \*/
+
+/\*\*
+
+- ========================================================================
+- 4.  BORDER RADIUS
+- ========================================================================
+-
+- ┌────────┬──────────┐
+- │ Class │ Value │
+- ├────────┼──────────┤
+- │ rounded-none │ 0px │
+- │ rounded-xs │ 4px │
+- │ rounded-sm │ 8px │
+- │ rounded-md │ 12px │
+- │ rounded-lg │ 16px │
+- │ rounded-xl │ 20px │
+- │ rounded-full │ 9999px │
+- └────────┴──────────┘
+-
+- Recommended usage:
+- - Cards, buttons: rounded-lg (16px)
+- - Input fields: rounded-lg (16px)
+- - Badges, small elements: rounded-full
+- - Images in cards: rounded-md (12px)
+    \*/
+
+/\*\*
+
+- ========================================================================
+- 5.  SHADOWS
+- ========================================================================
+-
+- Shadow utilities for depth and elevation:
+- - shadow-none : No shadow
+- - shadow-sm : Subtle shadow for light elevation
+- - shadow-md : Medium shadow for moderate elevation
+- - shadow-lg : Large shadow for significant elevation
+- - shadow-xl : Extra large shadow for floating elements
+- - shadow-card : Special shadow for cards (brand purple tinted)
+- - shadow-card-hover : Enhanced shadow for card hover state
+-
+- Usage:
+- <View className="bg-white rounded-lg shadow-card p-4">
+- <Text>This is a card with playful shadow</Text>
+- </View>
+  */
+
+/\*\*
+
+- ========================================================================
+- 6.  COMPONENT UTILITIES (BEM Methodology)
+- ========================================================================
+-
+- Component utilities are defined using BEM naming convention:
+- .component-name\_\_element--modifier
+-
+- A. BUTTONS
+- ───────────
+-
+- Base Classes:
+- - .btn : Base button style (flex center, rounded, transition)
+-
+- Button Variants:
+- - .btn--primary : Brand purple background (dominant CTA)
+- - .btn--secondary: Purple outline (secondary action)
+- - .btn--tertiary : Text only (minimal action)
+- - .btn--success : Green background (positive action)
+- - .btn--warning : Yellow background (caution)
+- - .btn--error : Red background (destructive)
+-
+- Button Sizes:
+- - .btn : Standard (48px height)
+- - .btn--sm : Small (40px height)
+- - .btn--lg : Large (56px height)
+- - .btn--full : Full width
+-
+- Example:
+- <TouchableOpacity className="btn--primary">
+- <Text className="text-white font-bold">Start Lesson</Text>
+- </TouchableOpacity>
+-
+- <TouchableOpacity className="btn--secondary btn--lg btn--full">
+- <Text className="text-brand-purple font-bold">Continue</Text>
+- </TouchableOpacity>
+-
+- B. CARDS
+- ────────
+-
+- - .card : Base card (white bg, rounded, padding, shadow)
+- - .card--sm : Small card (less padding)
+- - .card--lg : Large card (more padding)
+-
+- Example:
+- <View className="card">
+- <Text className="typo__h3">Lesson Title</Text>
+- <Text className="typo__body-md text-text-secondary">Description</Text>
+- </View>
+-
+- C. BADGES
+- ─────────
+-
+- - .badge : Base badge
+- - .badge--success : Green badge for completed status
+- - .badge--warning : Yellow badge for pending status
+- - .badge--error : Red badge for error status
+- - .badge--info : Blue badge for information
+-
+- Example:
+- <View className="badge--success">
+- <Text className="text-caption">Completed</Text>
+- </View>
+-
+- D. INPUT FIELDS
+- ───────────────
+-
+- - .input : Base input style
+- - .input--error : Error state (red border)
+-
+- Example:
+- <TextInput
+- className="input"
+- placeholder="Enter answer..."
+- placeholderTextColor="#687280"
+- />
+-
+- E. SURFACES
+- ───────────
+-
+- - .surface : Light background surface
+- - .surface--elevated : White background with shadow (elevated surface)
+-
+- Example:
+- <View className="surface">
+- <Text>Lighter background container</Text>
+- </View>
+-
+- F. DIVIDERS
+- ───────────
+-
+- - .divider : Horizontal divider line
+- - .divider--vertical : Vertical divider line
+-
+- Example:
+- <View className="divider" />
+-
+- G. PROGRESS BAR
+- ───────────────
+-
+- - .progress : Container
+- - .progress\_\_bar : Progress fill (purple by default)
+- - .progress\_\_bar--success : Green progress
+- - .progress\_\_bar--warning : Yellow progress
+-
+- Example:
+- <View className="progress">
+- <View className="progress\_\_bar" style={{ width: '70%' }} />
+- </View>
+  */
+
+/\*\*
+
+- ========================================================================
+- 7.  RESPONSIVE UTILITIES
+- ========================================================================
+-
+- - .container : Max-width wrapper with horizontal padding (800px max)
+- - .safe-area : Padding for notches on notched devices
+- - .flex-center : Flex with centered items and content
+- - .flex-between : Flex with items spread between (space-between)
+-
+- Example:
+- <View className="container">
+- <View className="flex-between">
+-     <Text>Left</Text>
+-     <Text>Right</Text>
+- </View>
+- </View>
+  */
+
+/\*\*
+
+- ========================================================================
+- 8.  ANIMATIONS
+- ========================================================================
+-
+- - .animate-fade-in : Fade in animation (300ms)
+- - .animate-slide-up : Slide up animation (300ms)
+- - .animate-pulse : Pulsing animation (2s infinite)
+-
+- Example:
+- <View className="animate-fade-in">
+- <Text>This content fades in</Text>
+- </View>
+  */
+
+/\*\*
+
+- ========================================================================
+- 9.  PRACTICAL EXAMPLES
+- ========================================================================
+-
+- 1.  Lesson Card:
+- ───────────────
+- <View className="card">
+- <View className="flex-between mb-4">
+-     <Text className="typo__h3">Spanish 101</Text>
+-     <View className="badge--success">
+-       <Text className="typo__caption">Completed</Text>
+-     </View>
+- </View>
+- <Text className="typo__body-md text-text-secondary mb-4">
+-     Learn basic Spanish vocabulary and phrases
+- </Text>
+- <View className="progress mb-4">
+-     <View className="progress__bar" style={{ width: '75%' }} />
+- </View>
+- <TouchableOpacity className="btn--primary btn--full">
+-     <Text className="text-white font-bold">Continue</Text>
+- </TouchableOpacity>
+- </View>
+-
+- 2.  Language Selection:
+- ──────────────────────
+- <View className="container">
+- <Text className="typo__h1 mb-6">Choose a Language</Text>
+- <View className="gap-3">
+-     {languages.map((lang) => (
+-       <TouchableOpacity
+-         key={lang.id}
+-         className="card flex-between cursor-pointer hover:shadow-card-hover"
+-       >
+-         <View>
+-           <Text className="typo__h4">{lang.name}</Text>
+-           <Text className="typo__body-sm text-text-secondary">
+-             {lang.description}
+-           </Text>
+-         </View>
+-         <Text className="typo__h4 text-brand-purple">{lang.level}</Text>
+-       </TouchableOpacity>
+-     ))}
+- </View>
+- </View>
+-
+- 3.  XP & Streak Display:
+- ───────────────────────
+- <View className="flex-between bg-surface rounded-lg p-4">
+- <View className="flex-center gap-2">
+-     <Text>✨</Text>
+-     <View>
+-       <Text className="typo__caption text-text-secondary">Total XP</Text>
+-       <Text className="typo__h3 text-brand-purple">2,450</Text>
+-     </View>
+- </View>
+- <View className="flex-center gap-2">
+-     <Text>🔥</Text>
+-     <View>
+-       <Text className="typo__caption text-text-secondary">Streak</Text>
+-       <Text className="typo__h3 text-streak">12 days</Text>
+-     </View>
+- </View>
+- </View>
+  */
+
+/\*\*
+
+- ========================================================================
+- 10. IMPORTING DESIGN TOKENS IN CODE
+- ========================================================================
+-
+- For TypeScript/JavaScript usage, import from src/constants/theme.ts:
+-
+- import {
+- Colors,
+- BrandColors,
+- SemanticColors,
+- NeutralColors,
+- Typography,
+- Fonts,
+- Spacing,
+- } from '@/constants/theme';
+-
+- // Access color values
+- const primaryColor = BrandColors.purple; // #6C4EF5
+-
+- // Access typography specs
+- const h1FontSize = Typography.h1.fontSize; // 32
+-
+- // Create dynamic styles (when needed, use StyleSheet)
+- const styles = StyleSheet.create({
+- heading: {
+-     fontSize: Typography.h1.fontSize,
+-     fontWeight: Typography.h1.fontWeight,
+-     color: Colors.light.text,
+- },
+- });
+  \*/
+
+export {};
