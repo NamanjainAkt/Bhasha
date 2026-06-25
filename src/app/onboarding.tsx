@@ -54,7 +54,7 @@ export default function OnboardingScreen() {
           <TouchableOpacity
             style={styles.getStartedButton}
             activeOpacity={0.8}
-            onPress={() => router.push("/")}
+            onPress={() => router.push("/(auth)/sign-up")}
           >
             <Text style={styles.getStartedText}>Get Started</Text>
           </TouchableOpacity>
@@ -62,7 +62,7 @@ export default function OnboardingScreen() {
           <TouchableOpacity
             style={styles.signInButton}
             activeOpacity={0.7}
-            onPress={() => router.push("/")}
+            onPress={() => router.push("/(auth)/sign-in")}
           >
             <Text style={styles.signInText}>I already have an account</Text>
           </TouchableOpacity>
