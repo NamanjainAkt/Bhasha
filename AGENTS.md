@@ -476,6 +476,12 @@ Use:
 
 ---
 
+## Git / Commit Rule
+
+**Never commit or push changes without explicit user consent.** Always ask before staging, committing, or pushing to any branch. The user must say "yes" or "commit" explicitly.
+
+---
+
 ## Final Reminder
 
 Before every feature implementation:

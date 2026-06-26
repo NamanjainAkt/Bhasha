@@ -1,3 +1,5 @@
+import { useAuth } from "@clerk/expo";
+import { Redirect } from "expo-router";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
@@ -8,6 +10,8 @@ import AppTabs from "@/components/app-tabs";
 SplashScreen.preventAutoHideAsync();
 
 export default function TabLayout() {
+  const { isSignedIn, isLoaded } = useAuth();
+
   const [fontsLoaded, fontError] = Font.useFonts({
     "Poppins-Regular": require("@/assets/fonts/Poppins-Regular.ttf"),
     "Poppins-Medium": require("@/assets/fonts/Poppins-Medium.ttf"),
@@ -20,6 +24,9 @@ export default function TabLayout() {
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded, fontError]);
+
+  if (!isLoaded) return null;
+  if (!isSignedIn) return <Redirect href="/(auth)/sign-in" />;
 
   if (!fontsLoaded && !fontError) {
     return null;

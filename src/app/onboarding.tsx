@@ -1,7 +1,6 @@
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
 import {
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -10,32 +9,50 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { BrandColors } from "@/constants/theme";
 import { images } from "@/constants/images";
-import { BrandColors, Fonts, Spacing, Typography } from "@/constants/theme";
+
+function FeatureRow({ image, text }: { image: string; text: string }) {
+  return (
+    <View className="flex-row items-center gap-3 px-1">
+      <View className="w-12 h-12 rounded-xl bg-surface items-center justify-center">
+        <Image source={image} style={{ width: 28, height: 28 }} />
+      </View>
+      <Text className="font-poppins text-[14px] font-regular text-text-primary flex-1 leading-5">
+        {text}
+      </Text>
+    </View>
+  );
+}
 
 export default function OnboardingScreen() {
   const router = useRouter();
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.header}>
-          <Image source={images.mascotLogo} style={styles.logo} />
-          <Text style={styles.appName}>Bhasha</Text>
-        </View>
-
-        <View style={styles.heroSection}>
-          <Image source={images.mascotWelcome} style={styles.mascot} />
-          <Text style={styles.heroTitle}>Learn Languages{'\n'}with AI</Text>
-          <Text style={styles.heroSubtitle}>
-            Interactive lessons, real-time conversations,{'\n'}and personalized feedback
+        <View className="flex-row items-center justify-center pt-3 gap-2">
+          <Image source={images.mascotLogo} style={{ width: 40, height: 40 }} />
+          <Text className="font-poppins text-[24px] font-bold text-brand-purple">
+            Bhasha
           </Text>
         </View>
 
-        <View style={styles.featuresSection}>
+        <View className="items-center mt-6">
+          <Image source={images.mascotWelcome} style={{ width: 200, height: 200 }} />
+          <Text className="font-poppins text-[28px] font-bold text-brand-purple text-center mt-4 leading-[33px]">
+            Learn Languages{"\n"}with AI
+          </Text>
+          <Text className="font-poppins text-[14px] font-regular text-text-secondary text-center mt-2 leading-[22px]">
+            Interactive lessons, real-time conversations,{"\n"}and personalized
+            feedback
+          </Text>
+        </View>
+
+        <View className="mt-6 gap-3" style={{ paddingHorizontal: 4 }}>
           <FeatureRow
             image={images.earth}
             text="Interactive lessons tailored to your level"
@@ -50,13 +67,15 @@ export default function OnboardingScreen() {
           />
         </View>
 
-        <View style={styles.bottomSection}>
+        <View className="mt-6 gap-3">
           <TouchableOpacity
             style={styles.getStartedButton}
             activeOpacity={0.8}
             onPress={() => router.push("/(auth)/sign-up")}
           >
-            <Text style={styles.getStartedText}>Get Started</Text>
+            <Text className="font-poppins text-[16px] font-bold text-white">
+              Get Started
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -64,7 +83,9 @@ export default function OnboardingScreen() {
             activeOpacity={0.7}
             onPress={() => router.push("/(auth)/sign-in")}
           >
-            <Text style={styles.signInText}>I already have an account</Text>
+            <Text className="font-poppins text-[16px] font-semibold text-brand-purple">
+              I already have an account
+            </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -72,103 +93,11 @@ export default function OnboardingScreen() {
   );
 }
 
-function FeatureRow({ image, text }: { image: string; text: string }) {
-  return (
-    <View style={styles.featureRow}>
-      <View style={styles.featureIcon}>
-        <Image source={image} style={styles.featureIconImage} />
-      </View>
-      <Text style={styles.featureText}>{text}</Text>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-  },
   scrollContent: {
     flexGrow: 1,
-    paddingHorizontal: Spacing.four,
-    paddingBottom: Spacing.five,
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingTop: Spacing.three,
-    gap: Spacing.two,
-  },
-  logo: {
-    width: 40,
-    height: 40,
-  },
-  appName: {
-    fontFamily: Fonts.poppins,
-    fontSize: 24,
-    fontWeight: "700",
-    color: BrandColors.purple,
-  },
-  heroSection: {
-    alignItems: "center",
-    marginTop: Spacing.six,
-  },
-  mascot: {
-    width: 200,
-    height: 200,
-  },
-  heroTitle: {
-    fontFamily: Fonts.poppins,
-    fontSize: Typography.h1.fontSize,
-    fontWeight: "700",
-    color: BrandColors.purple,
-    textAlign: "center",
-    marginTop: Spacing.four,
-    lineHeight: Typography.h1.fontSize * 1.2,
-  },
-  heroSubtitle: {
-    fontFamily: Fonts.poppins,
-    fontSize: 14,
-    fontWeight: "400",
-    color: "#687280",
-    textAlign: "center",
-    marginTop: Spacing.two,
-    lineHeight: 22,
-  },
-  featuresSection: {
-    marginTop: Spacing.six,
-    gap: Spacing.three,
-    paddingHorizontal: Spacing.one,
-  },
-  featureRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: Spacing.three,
-  },
-  featureIcon: {
-    width: 48,
-    height: 48,
-    borderRadius: 12,
-    backgroundColor: "#F6F7FB",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  featureIconImage: {
-    width: 28,
-    height: 28,
-  },
-  featureText: {
-    fontFamily: Fonts.poppins,
-    fontSize: 14,
-    fontWeight: "400",
-    color: "#0D1328",
-    flex: 1,
-    lineHeight: 20,
-  },
-  bottomSection: {
-    marginTop: Spacing.six,
-    gap: Spacing.three,
+    paddingHorizontal: 16,
+    paddingBottom: 20,
   },
   getStartedButton: {
     backgroundColor: BrandColors.purple,
@@ -177,12 +106,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  getStartedText: {
-    fontFamily: Fonts.poppins,
-    fontSize: 16,
-    fontWeight: "700",
-    color: "#FFFFFF",
-  },
   signInButton: {
     height: 56,
     borderRadius: 16,
@@ -190,11 +113,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderWidth: 2,
     borderColor: BrandColors.purple,
-  },
-  signInText: {
-    fontFamily: Fonts.poppins,
-    fontSize: 16,
-    fontWeight: "600",
-    color: BrandColors.purple,
   },
 });

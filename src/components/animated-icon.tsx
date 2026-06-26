@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   backgroundSolidColor: {
+    // @ts-expect-error - absoluteFill type differs in SDK 54
     ...StyleSheet.absoluteFill,
     backgroundColor: '#208AEF',
     zIndex: 1000,
