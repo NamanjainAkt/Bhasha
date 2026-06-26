@@ -6,11 +6,13 @@ import { useEffect } from "react";
 
 import { AnimatedSplashOverlay } from "@/components/animated-icon";
 import AppTabs from "@/components/app-tabs";
+import { useLearningStore } from "@/store/learning";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function TabLayout() {
   const { isSignedIn, isLoaded } = useAuth();
+  const selectedLanguage = useLearningStore((s) => s.selectedLanguage);
 
   const [fontsLoaded, fontError] = Font.useFonts({
     "Poppins-Regular": require("@/assets/fonts/Poppins-Regular.ttf"),
@@ -27,6 +29,7 @@ export default function TabLayout() {
 
   if (!isLoaded) return null;
   if (!isSignedIn) return <Redirect href="/(auth)/sign-in" />;
+  if (!selectedLanguage) return <Redirect href="/language-select" />;
 
   if (!fontsLoaded && !fontError) {
     return null;

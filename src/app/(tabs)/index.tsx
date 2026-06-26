@@ -1,37 +1,18 @@
-import { Show, useUser, useClerk } from "@clerk/expo";
-import * as Device from "expo-device";
-import { Platform, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { useUser, useClerk } from "@clerk/expo";
+import { useRouter } from "expo-router";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { ChevronRight } from "lucide-react-native";
 
 import { AnimatedIcon } from "@/components/animated-icon";
-import { HintRow } from "@/components/hint-row";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { WebBadge } from "@/components/web-badge";
-import { BottomTabInset, MaxContentWidth, Spacing } from "@/constants/theme";
-
-function getDevMenuHint() {
-  if (Platform.OS === "web") {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === "android" ? "cmd+m (or ctrl+m)" : "cmd+d";
-  return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
+import { BrandColors } from "@/constants/theme";
 
 export default function HomeScreen() {
   const { user } = useUser();
   const { signOut } = useClerk();
+  const router = useRouter();
 
   return (
     <ThemedView style={styles.container}>
@@ -43,35 +24,31 @@ export default function HomeScreen() {
           </ThemedText>
         </ThemedView>
 
-        <Show when="signed-in">
-          <TouchableOpacity
-            style={styles.signOutButton}
-            onPress={() => signOut()}
-            activeOpacity={0.7}
-          >
-            <Text className="font-poppins text-body-md font-semibold text-error">
-              Sign Out
-            </Text>
-          </TouchableOpacity>
-        </Show>
+        <TouchableOpacity
+          style={styles.languageButton}
+          activeOpacity={0.8}
+          onPress={() => router.push("/language-select")}
+        >
+          <ThemedView style={styles.languageButtonInner}>
+            <ThemedText style={styles.languageButtonText}>
+              Choose Language
+            </ThemedText>
+            <ThemedText style={styles.languageButtonSubtext}>
+              Pick what you want to learn
+            </ThemedText>
+          </ThemedView>
+          <ChevronRight size={22} color={BrandColors.purple} />
+        </TouchableOpacity>
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === "web" && <WebBadge />}
+        <TouchableOpacity
+          style={styles.signOutButton}
+          onPress={() => signOut()}
+          activeOpacity={0.7}
+        >
+          <Text className="font-poppins text-body-md font-semibold text-error">
+            Sign Out
+          </Text>
+        </TouchableOpacity>
       </SafeAreaView>
     </ThemedView>
   );
@@ -85,31 +62,42 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
-    paddingHorizontal: Spacing.four,
+    paddingHorizontal: 24,
     alignItems: "center",
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+    gap: 12,
   },
   heroSection: {
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+    paddingHorizontal: 24,
+    gap: 24,
   },
   title: {
     textAlign: "center",
   },
-  code: {
-    textTransform: "uppercase",
+  languageButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 16,
+    padding: 16,
+    borderWidth: 2,
+    borderColor: BrandColors.purple,
+    width: "100%",
   },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: "stretch",
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+  languageButtonInner: {
+    flex: 1,
+    gap: 2,
+  },
+  languageButtonText: {
+    fontWeight: "700",
+    fontSize: 16,
+    color: BrandColors.purple,
+  },
+  languageButtonSubtext: {
+    fontSize: 13,
+    color: "#687280",
   },
   signOutButton: {
     paddingVertical: 8,
