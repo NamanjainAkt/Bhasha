@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
 import { useState } from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { Dimensions, View } from 'react-native';
 import Animated, { Easing, Keyframe } from 'react-native-reanimated';
 import { scheduleOnRN } from 'react-native-worklets';
 
@@ -39,7 +39,15 @@ export function AnimatedSplashOverlay() {
           scheduleOnRN(setVisible, false);
         }
       })}
-      style={styles.backgroundSolidColor}
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        backgroundColor: '#208AEF',
+        zIndex: 1000,
+      }}
     />
   );
 }
@@ -82,52 +90,15 @@ const glowKeyframe = new Keyframe({
 
 export function AnimatedIcon() {
   return (
-    <View style={styles.iconContainer}>
-      <Animated.View entering={glowKeyframe.duration(60 * 1000 * 4)} style={styles.glow}>
-        <Image style={styles.glow} source={require('@/assets/images/logo-glow.png')} />
+    <View style={{ justifyContent: 'center', alignItems: 'center', width: 128, height: 128, zIndex: 100 }}>
+      <Animated.View entering={glowKeyframe.duration(60 * 1000 * 4)} style={{ width: 201, height: 201, position: 'absolute' }}>
+        <Image style={{ width: 201, height: 201, position: 'absolute' }} source={require('@/assets/images/logo-glow.png')} />
       </Animated.View>
 
-      <Animated.View entering={keyframe.duration(DURATION)} style={styles.background} />
-      <Animated.View style={styles.imageContainer} entering={logoKeyframe.duration(DURATION)}>
-        <Image style={styles.image} source={require('@/assets/images/expo-logo.png')} />
+      <Animated.View entering={keyframe.duration(DURATION)} style={{ borderRadius: 40, experimental_backgroundImage: 'linear-gradient(180deg, #3C9FFE, #0274DF)', width: 128, height: 128, position: 'absolute' }} />
+      <Animated.View style={{ justifyContent: 'center', alignItems: 'center' }} entering={logoKeyframe.duration(DURATION)}>
+        <Image style={{ position: 'absolute', width: 76, height: 71 }} source={require('@/assets/images/expo-logo.png')} />
       </Animated.View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  imageContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  glow: {
-    width: 201,
-    height: 201,
-    position: 'absolute',
-  },
-  iconContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 128,
-    height: 128,
-    zIndex: 100,
-  },
-  image: {
-    position: 'absolute',
-    width: 76,
-    height: 71,
-  },
-  background: {
-    borderRadius: 40,
-    experimental_backgroundImage: `linear-gradient(180deg, #3C9FFE, #0274DF)`,
-    width: 128,
-    height: 128,
-    position: 'absolute',
-  },
-  backgroundSolidColor: {
-    // @ts-expect-error - absoluteFill type differs in SDK 54
-    ...StyleSheet.absoluteFill,
-    backgroundColor: '#208AEF',
-    zIndex: 1000,
-  },
-});

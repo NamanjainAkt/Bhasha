@@ -6,7 +6,6 @@ import {
   Platform,
   Pressable,
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   View,
@@ -142,7 +141,7 @@ export default function SignUpScreen() {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <ScrollView
-          contentContainerStyle={styles.scrollContent}
+          contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 16, paddingBottom: 20 }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
@@ -191,7 +190,7 @@ export default function SignUpScreen() {
                     setEmail(text);
                     if (error) setError("");
                   }}
-                  style={styles.input}
+                  style={{ flex: 1, height: "100%", paddingHorizontal: 8, fontFamily: "Poppins", fontSize: 15, color: "#0D1328" }}
                 />
               </View>
             </View>
@@ -215,7 +214,7 @@ export default function SignUpScreen() {
                     setPassword(text);
                     if (error) setError("");
                   }}
-                  style={[styles.input, { paddingLeft: 12 }]}
+                  style={{ flex: 1, height: "100%", paddingHorizontal: 8, paddingLeft: 12, fontFamily: "Poppins", fontSize: 15, color: "#0D1328" }}
                 />
                 <Pressable
                   className="p-2"
@@ -241,7 +240,7 @@ export default function SignUpScreen() {
                 "items-center justify-center h-[54px] rounded-[14px] bg-brand-purple mt-2 " +
                 (loading ? "opacity-70" : "")
               }
-              style={({ pressed }) => pressed && styles.pressedPurple}
+              style={({ pressed }) => pressed && { backgroundColor: "#583BF6" }}
               onPress={handleSignUp}
               disabled={loading}
             >
@@ -262,7 +261,7 @@ export default function SignUpScreen() {
           <View className="mt-4 gap-2">
             <Pressable
               className="flex-row items-center justify-center gap-2 h-[52px] rounded-[14px] border-[1.5px] border-border-light bg-white"
-              style={({ pressed }) => pressed && styles.pressedSurface}
+              style={({ pressed }) => pressed && { backgroundColor: "#F6F7FB" }}
             >
               <GoogleIcon size={20} />
               <Text className="font-poppins text-body-md font-semibold text-text-primary">
@@ -272,7 +271,7 @@ export default function SignUpScreen() {
 
             <Pressable
               className="flex-row items-center justify-center gap-2 h-[52px] rounded-[14px] border-[1.5px] border-border-light bg-white"
-              style={({ pressed }) => pressed && styles.pressedSurface}
+              style={({ pressed }) => pressed && { backgroundColor: "#F6F7FB" }}
             >
               <AppleIcon size={20} />
               <Text className="font-poppins text-body-md font-semibold text-text-primary">
@@ -306,24 +305,4 @@ export default function SignUpScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  scrollContent: {
-    flexGrow: 1,
-    paddingHorizontal: 16,
-    paddingBottom: 20,
-  },
-  input: {
-    flex: 1,
-    height: "100%",
-    paddingHorizontal: 8,
-    fontFamily: "Poppins",
-    fontSize: 15,
-    color: "#0D1328",
-  },
-  pressedPurple: {
-    backgroundColor: "#583BF6",
-  },
-  pressedSurface: {
-    backgroundColor: "#F6F7FB",
-  },
-});
+

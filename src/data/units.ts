@@ -36,6 +36,24 @@ export const units: Unit[] = [
     order: 1,
     color: '#FF4B4B',
   },
+  // German
+  {
+    id: 'de-basics',
+    languageId: 'de',
+    title: 'Basics',
+    description: 'Essential German greetings, numbers, and phrases',
+    order: 1,
+    color: '#4D88FF',
+  },
+  // Italian
+  {
+    id: 'it-basics',
+    languageId: 'it',
+    title: 'Basics',
+    description: 'Essential Italian greetings, food, and directions',
+    order: 1,
+    color: '#FF9600',
+  },
 ];
 
 export const unitsMap = new Map(units.map((u) => [u.id, u]));

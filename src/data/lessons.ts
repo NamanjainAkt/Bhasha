@@ -321,6 +321,666 @@ export const lessons: Lesson[] = [
     ],
     vocabularyIds: ['ja-voc-a', 'ja-voc-i', 'ja-voc-u', 'ja-voc-e', 'ja-voc-o'],
   },
+
+  // ═══════════════════════════════════════════════════════════
+  // Japanese — Hiragana — Lesson 2: K-Column
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'ja-hiragana-2',
+    unitId: 'ja-hiragana',
+    title: 'K-Column かきくけこ',
+    description: 'Learn Hiragana characters from the K column',
+    order: 2,
+    type: 'vocabulary',
+    xpReward: 20,
+    goals: [{ description: 'Read and write K-column Hiragana' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: 'Which Hiragana character is "ka"?',
+        options: ['か', 'き', 'く', 'け'],
+        correctIndex: 0,
+      },
+      {
+        type: 'multipleChoice',
+        prompt: 'Which Hiragana character is "ki"?',
+        options: ['か', 'き', 'く', 'こ'],
+        correctIndex: 1,
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'か', right: 'ka' },
+          { left: 'き', right: 'ki' },
+          { left: 'く', right: 'ku' },
+          { left: 'け', right: 'ke' },
+          { left: 'こ', right: 'ko' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // Japanese — Hiragana — Lesson 3: S-Column
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'ja-hiragana-3',
+    unitId: 'ja-hiragana',
+    title: 'S-Column さしすせそ',
+    description: 'Learn Hiragana characters from the S column',
+    order: 3,
+    type: 'vocabulary',
+    xpReward: 20,
+    goals: [{ description: 'Read and write S-column Hiragana' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: 'Which Hiragana character is "sa"?',
+        options: ['さ', 'し', 'す', 'せ'],
+        correctIndex: 0,
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'さ', right: 'sa' },
+          { left: 'し', right: 'shi' },
+          { left: 'す', right: 'su' },
+          { left: 'せ', right: 'se' },
+          { left: 'そ', right: 'so' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // Japanese — Hiragana — Lesson 4: T-Column
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'ja-hiragana-4',
+    unitId: 'ja-hiragana',
+    title: 'T-Column たちつてと',
+    description: 'Learn Hiragana characters from the T column',
+    order: 4,
+    type: 'vocabulary',
+    xpReward: 20,
+    goals: [{ description: 'Read and write T-column Hiragana' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: 'Which Hiragana character is "ta"?',
+        options: ['た', 'ち', 'つ', 'て'],
+        correctIndex: 0,
+      },
+      {
+        type: 'fillInBlank',
+        prompt: 'The Hiragana character つ is pronounced ___',
+        answer: 'tsu',
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'た', right: 'ta' },
+          { left: 'ち', right: 'chi' },
+          { left: 'つ', right: 'tsu' },
+          { left: 'て', right: 'te' },
+          { left: 'と', right: 'to' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // Japanese — Hiragana — Lesson 5: N-Column
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'ja-hiragana-5',
+    unitId: 'ja-hiragana',
+    title: 'N-Column なにぬねの',
+    description: 'Learn Hiragana characters from the N column',
+    order: 5,
+    type: 'vocabulary',
+    xpReward: 20,
+    goals: [{ description: 'Read and write N-column Hiragana' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: 'Which Hiragana character is "na"?',
+        options: ['な', 'に', 'ぬ', 'ね'],
+        correctIndex: 0,
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'な', right: 'na' },
+          { left: 'に', right: 'ni' },
+          { left: 'ぬ', right: 'nu' },
+          { left: 'ね', right: 'ne' },
+          { left: 'の', right: 'no' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // French — Bonjour! — Lesson 2: Common Phrases
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'fr-basics-2',
+    unitId: 'fr-basics',
+    title: 'Common Phrases',
+    description: 'Learn everyday French phrases',
+    order: 2,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Use common French phrases' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "What does 'comment ça va?' mean?",
+        options: ["How's it going?", 'Goodbye', 'Thank you', 'Excuse me'],
+        correctIndex: 0,
+      },
+      {
+        type: 'fillInBlank',
+        prompt: "'___' means 'please' in French.",
+        answer: "s'il vous plaît",
+        hint: 'Starts with S',
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'comment ça va?', right: "how's it going?" },
+          { left: 'très bien', right: 'very good' },
+          { left: 'excusez-moi', right: 'excuse me' },
+          { left: 'pardon', right: 'sorry' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // French — Bonjour! — Lesson 3: Numbers 1-10
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'fr-basics-3',
+    unitId: 'fr-basics',
+    title: 'Numbers 1–10',
+    description: 'Count from one to ten in French',
+    order: 3,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Count from 1 to 10 in French' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "What is 'un' in English?",
+        options: ['one', 'two', 'three', 'five'],
+        correctIndex: 0,
+      },
+      {
+        type: 'multipleChoice',
+        prompt: "'trois' means what number?",
+        options: ['two', 'three', 'four', 'eight'],
+        correctIndex: 1,
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'un', right: '1' },
+          { left: 'deux', right: '2' },
+          { left: 'trois', right: '3' },
+          { left: 'quatre', right: '4' },
+          { left: 'cinq', right: '5' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // French — Bonjour! — Lesson 4: Colors
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'fr-basics-4',
+    unitId: 'fr-basics',
+    title: 'Colors',
+    description: 'Name colors in French',
+    order: 4,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Name common colors in French' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "'rouge' means what color?",
+        options: ['red', 'blue', 'green', 'yellow'],
+        correctIndex: 0,
+      },
+      {
+        type: 'fillInBlank',
+        prompt: "'___' means 'blue' in French.",
+        answer: 'bleu',
+        hint: 'Starts with B',
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'rouge', right: 'red' },
+          { left: 'bleu', right: 'blue' },
+          { left: 'vert', right: 'green' },
+          { left: 'jaune', right: 'yellow' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // French — Bonjour! — Lesson 5: Family & Friends
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'fr-basics-5',
+    unitId: 'fr-basics',
+    title: 'Family & Friends',
+    description: 'Talk about family and friends in French',
+    order: 5,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Name family members in French' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "'mère' means what?",
+        options: ['mother', 'father', 'sister', 'brother'],
+        correctIndex: 0,
+      },
+      {
+        type: 'multipleChoice',
+        prompt: "'frère' means what?",
+        options: ['mother', 'father', 'sister', 'brother'],
+        correctIndex: 3,
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'mère', right: 'mother' },
+          { left: 'père', right: 'father' },
+          { left: 'soeur', right: 'sister' },
+          { left: 'frère', right: 'brother' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // German — Basics — Lesson 1: Greetings
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'de-basics-1',
+    unitId: 'de-basics',
+    title: 'Greetings',
+    description: 'Learn to say hello and goodbye in German',
+    order: 1,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Greet someone in German' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "What does 'Hallo' mean?",
+        options: ['hello', 'goodbye', 'thanks', 'please'],
+        correctIndex: 0,
+      },
+      {
+        type: 'multipleChoice',
+        prompt: "What does 'Tschüss' mean?",
+        options: ['hello', 'goodbye', 'yes', 'no'],
+        correctIndex: 1,
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'Hallo', right: 'hello' },
+          { left: 'Tschüss', right: 'goodbye' },
+          { left: 'Danke', right: 'thank you' },
+          { left: 'Bitte', right: 'please' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // German — Basics — Lesson 2: Introductions
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'de-basics-2',
+    unitId: 'de-basics',
+    title: 'Introductions',
+    description: 'Introduce yourself in German',
+    order: 2,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Introduce yourself in German' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "'Ich heiße...' means what?",
+        options: ['My name is...', 'I am from...', 'How are you?', 'Nice to meet you'],
+        correctIndex: 0,
+      },
+      {
+        type: 'fillInBlank',
+        prompt: "'___' means 'How are you?' in German.",
+        answer: 'Wie geht es dir?',
+        hint: 'Starts with Wie',
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'Ich heiße...', right: 'My name is...' },
+          { left: 'Wie geht es dir?', right: 'How are you?' },
+          { left: 'Freut mich', right: 'Nice to meet you' },
+          { left: 'Woher kommst du?', right: 'Where are you from?' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // German — Basics — Lesson 3: Numbers 1-10
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'de-basics-3',
+    unitId: 'de-basics',
+    title: 'Numbers 1–10',
+    description: 'Count from one to ten in German',
+    order: 3,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Count from 1 to 10 in German' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "'eins' means what number?",
+        options: ['1', '2', '3', '8'],
+        correctIndex: 0,
+      },
+      {
+        type: 'fillInBlank',
+        prompt: "'___' means 'three' in German.",
+        answer: 'drei',
+        hint: 'Starts with D',
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'eins', right: '1' },
+          { left: 'zwei', right: '2' },
+          { left: 'drei', right: '3' },
+          { left: 'vier', right: '4' },
+          { left: 'fünf', right: '5' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // German — Basics — Lesson 4: Colors
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'de-basics-4',
+    unitId: 'de-basics',
+    title: 'Colors',
+    description: 'Name colors in German',
+    order: 4,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Name common colors in German' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "'rot' means what color?",
+        options: ['red', 'blue', 'green', 'black'],
+        correctIndex: 0,
+      },
+      {
+        type: 'multipleChoice',
+        prompt: "'blau' means what color?",
+        options: ['red', 'blue', 'green', 'white'],
+        correctIndex: 1,
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'rot', right: 'red' },
+          { left: 'blau', right: 'blue' },
+          { left: 'grün', right: 'green' },
+          { left: 'gelb', right: 'yellow' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // German — Basics — Lesson 5: Food & Drink
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'de-basics-5',
+    unitId: 'de-basics',
+    title: 'Food & Drink',
+    description: 'Name foods and drinks in German',
+    order: 5,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Name common foods in German' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "'Wasser' means what?",
+        options: ['water', 'bread', 'milk', 'beer'],
+        correctIndex: 0,
+      },
+      {
+        type: 'fillInBlank',
+        prompt: "'___' means 'bread' in German.",
+        answer: 'Brot',
+        hint: 'Capital B',
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'Wasser', right: 'water' },
+          { left: 'Brot', right: 'bread' },
+          { left: 'Milch', right: 'milk' },
+          { left: 'Obst', right: 'fruit' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // Italian — Basics — Lesson 1: Greetings
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'it-basics-1',
+    unitId: 'it-basics',
+    title: 'Greetings',
+    description: 'Learn to say hello and goodbye in Italian',
+    order: 1,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Greet someone in Italian' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "What does 'Ciao' mean?",
+        options: ['hello/bye', 'good night', 'thank you', 'please'],
+        correctIndex: 0,
+      },
+      {
+        type: 'multipleChoice',
+        prompt: "What does 'Arrivederci' mean?",
+        options: ['hello', 'goodbye', 'thanks', 'sorry'],
+        correctIndex: 1,
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'Ciao', right: 'hello / goodbye' },
+          { left: 'Arrivederci', right: 'goodbye (formal)' },
+          { left: 'Grazie', right: 'thank you' },
+          { left: 'Per favore', right: 'please' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // Italian — Basics — Lesson 2: Introductions
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'it-basics-2',
+    unitId: 'it-basics',
+    title: 'Introductions',
+    description: 'Introduce yourself in Italian',
+    order: 2,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Introduce yourself in Italian' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "'Mi chiamo...' means what?",
+        options: ['My name is...', 'I am from...', 'How are you?', 'Good morning'],
+        correctIndex: 0,
+      },
+      {
+        type: 'fillInBlank',
+        prompt: "'___' means 'How are you?' in Italian.",
+        answer: 'Come stai?',
+        hint: 'Starts with Come',
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'Mi chiamo...', right: 'My name is...' },
+          { left: 'Come stai?', right: 'How are you?' },
+          { left: 'Bene, grazie', right: "I'm fine, thanks" },
+          { left: 'Piacere', right: 'Nice to meet you' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // Italian — Basics — Lesson 3: Numbers 1-10
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'it-basics-3',
+    unitId: 'it-basics',
+    title: 'Numbers 1–10',
+    description: 'Count from one to ten in Italian',
+    order: 3,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Count from 1 to 10 in Italian' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "'uno' means what number?",
+        options: ['1', '2', '3', '5'],
+        correctIndex: 0,
+      },
+      {
+        type: 'multipleChoice',
+        prompt: "'cinque' means what number?",
+        options: ['two', 'four', 'five', 'ten'],
+        correctIndex: 2,
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'uno', right: '1' },
+          { left: 'due', right: '2' },
+          { left: 'tre', right: '3' },
+          { left: 'quattro', right: '4' },
+          { left: 'cinque', right: '5' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // Italian — Basics — Lesson 4: At the Restaurant
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'it-basics-4',
+    unitId: 'it-basics',
+    title: 'At the Restaurant',
+    description: 'Order food and drinks in Italian',
+    order: 4,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Order food in Italian' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "'Il conto' means what?",
+        options: ['the bill', 'the menu', 'the food', 'the table'],
+        correctIndex: 0,
+      },
+      {
+        type: 'fillInBlank',
+        prompt: "'___' means 'water' in Italian.",
+        answer: 'acqua',
+        hint: 'Starts with A',
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'acqua', right: 'water' },
+          { left: 'vino', right: 'wine' },
+          { left: 'pane', right: 'bread' },
+          { left: 'il conto', right: 'the bill' },
+        ],
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // Italian — Basics — Lesson 5: Directions
+  // ═══════════════════════════════════════════════════════════
+  {
+    id: 'it-basics-5',
+    unitId: 'it-basics',
+    title: 'Directions',
+    description: 'Ask for and give directions in Italian',
+    order: 5,
+    type: 'vocabulary',
+    xpReward: 15,
+    goals: [{ description: 'Ask for directions in Italian' }],
+    activities: [
+      {
+        type: 'multipleChoice',
+        prompt: "'Dov'è...' means what?",
+        options: ['Where is...', 'How much...', 'Who is...', 'When is...'],
+        correctIndex: 0,
+      },
+      {
+        type: 'fillInBlank',
+        prompt: "'___' means 'straight ahead' in Italian.",
+        answer: 'sempre dritto',
+        hint: 'Starts with sempre',
+      },
+      {
+        type: 'matchPairs',
+        pairs: [
+          { left: 'Dov\'è...', right: 'Where is...' },
+          { left: 'a destra', right: 'to the right' },
+          { left: 'a sinistra', right: 'to the left' },
+          { left: 'sempre dritto', right: 'straight ahead' },
+        ],
+      },
+    ],
+  },
 ];
 
 // ── Helpers ──────────────────────────────────────────────────

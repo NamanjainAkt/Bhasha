@@ -6,7 +6,6 @@ import {
   Modal,
   Platform,
   Pressable,
-  StyleSheet,
   Text,
   TextInput,
   View,
@@ -154,7 +153,7 @@ export default function VerificationModal({
                 }
               }}
               autoFocus
-              style={styles.hiddenInput}
+              style={{ position: "absolute", width: 1, height: 1, opacity: 0 }}
             />
 
             <View className="flex-row flex-wrap justify-center gap-2 max-w-[300px] self-center">
@@ -195,11 +194,4 @@ export default function VerificationModal({
   );
 }
 
-const styles = StyleSheet.create({
-  hiddenInput: {
-    position: "absolute",
-    width: 1,
-    height: 1,
-    opacity: 0,
-  },
-});
+

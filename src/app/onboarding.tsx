@@ -2,14 +2,12 @@ import { Image } from "expo-image";
 import { useRouter } from "expo-router";
 import {
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { BrandColors } from "@/constants/theme";
 import { images } from "@/constants/images";
 
 function FeatureRow({ image, text }: { image: string; text: string }) {
@@ -31,7 +29,7 @@ export default function OnboardingScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
       <ScrollView
-        contentContainerStyle={styles.scrollContent}
+        contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 16, paddingBottom: 20 }}
         showsVerticalScrollIndicator={false}
       >
         <View className="flex-row items-center justify-center pt-3 gap-2">
@@ -69,7 +67,7 @@ export default function OnboardingScreen() {
 
         <View className="mt-6 gap-3">
           <TouchableOpacity
-            style={styles.getStartedButton}
+            className="bg-brand-purple h-14 rounded-2xl items-center justify-center"
             activeOpacity={0.8}
             onPress={() => router.push("/(auth)/sign-up")}
           >
@@ -79,7 +77,7 @@ export default function OnboardingScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={styles.signInButton}
+            className="h-14 rounded-2xl items-center justify-center border-2 border-brand-purple"
             activeOpacity={0.7}
             onPress={() => router.push("/(auth)/sign-in")}
           >
@@ -93,25 +91,4 @@ export default function OnboardingScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  scrollContent: {
-    flexGrow: 1,
-    paddingHorizontal: 16,
-    paddingBottom: 20,
-  },
-  getStartedButton: {
-    backgroundColor: BrandColors.purple,
-    height: 56,
-    borderRadius: 16,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  signInButton: {
-    height: 56,
-    borderRadius: 16,
-    alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 2,
-    borderColor: BrandColors.purple,
-  },
-});
+
